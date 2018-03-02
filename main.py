@@ -1,22 +1,25 @@
 from flask import Flask, render_template
-app = Flask(__name__,)
+from flask_bootstrap import Bootstrap
+from flask_pymongo import PyMongo
+sts9 = Flask(__name__, )
 
-@app.route('/')
-@app.route('/<name>')
-def hello_name(name=None):
-    return render_template('hello.html', name=name)
+bootstrap = Bootstrap(sts9)
 
-@app.route('/layout')
-def layout_page():
-    return render_template('layout.html')
+#sts9 db connection#
+sts9.config['MONGO_HOST'] = '10.0.0.36'
+sts9.config['MONGO_PORT'] = 27017
+sts9.config['MONGO_DBNAME'] = 'sts9_db'
+sts9_db = PyMongo(sts9, config_prefix='MONGO')
 
-@app.route('/child')
-def child():
-    return render_template('child.html')
+#SETLISTS#
+@sts9.route('/setlists')
+def setlists():
+    setlists_data = sts9_db.db.setlists.find()
+    return render_template('setlists_nav.html', setlists_data=setlists_data)
 
-@app.errorhandler(404)
+@sts9.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run()
+    sts9.run(debug=True)

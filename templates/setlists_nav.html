@@ -1,0 +1,33 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Setlists</h1>
+        </div>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Venue</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+
+            {% for year in setlists_data %}
+            <tr>
+                <td>{{ year['year'] }}</td>
+                <td>{{ year['month'] }}</td>
+                <td>{{ year['day'] }}</td>
+                <td>{{ year['venue'] }}</td>
+                <td>{{ year['city'] }}</td>
+                <td>{{ year['state'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
