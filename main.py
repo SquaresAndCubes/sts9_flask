@@ -17,6 +17,7 @@ def setlists():
     setlists_data = sts9_db.db.setlists.find()
     return render_template('setlists_nav.html', setlists_data=setlists_data)
 
+#404 - Page Not Found Error Handler#
 @sts9.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

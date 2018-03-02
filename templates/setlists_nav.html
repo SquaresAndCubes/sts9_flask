@@ -1,7 +1,15 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}Index{% endblock %}
-{% block head %}
+{% extends "base.html" %}
+
+<!-- Title -->
+
+{% block title %}
+STS9 Setlists
 {% endblock %}
+
+<!-- Content Block -->
+{% block page_title %}Setlists{% endblock %}
+
+<!-- Content -->
 {% block content %}
     <div class="container">
         <div class="header">
@@ -16,6 +24,7 @@
                 <th>Venue</th>
                 <th>City</th>
                 <th>State</th>
+                <th>Setlist</th>
             </tr>
 
             {% for year in setlists_data %}
@@ -26,6 +35,7 @@
                 <td>{{ year['venue'] }}</td>
                 <td>{{ year['city'] }}</td>
                 <td>{{ year['state'] }}</td>
+                <td>{{ year['og_setlist'] }}</td>
             </tr>
             {% endfor %}
         </table>
