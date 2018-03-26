@@ -13,9 +13,18 @@ STS9 Setlists
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1>Setlists</h1>
+            <h1>{{year + ' Setlists'}}</h1>
         </div>
         <hr />
+        <!-- year buttons -->
+        <div class="btn-group" role="group" aria-label="...">
+            {% for yr in years %}
+            <button type="button" class="btn btn-default">{{yr}}</button>
+            {% endfor %}
+        </div>
+        <div>
+            &nbsp;
+        </div>
         <table class="table table-hover">
             <tr>
                 <th>Year</th>
@@ -27,7 +36,7 @@ STS9 Setlists
                 <th>Setlist</th>
             </tr>
 
-            {% for year in setlists_data %}
+            {% for year in setlists %}
             <tr>
                 <td>{{ year['year'] }}</td>
                 <td>{{ year['month'] }}</td>
