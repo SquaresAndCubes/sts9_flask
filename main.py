@@ -8,7 +8,7 @@ sts9 = Flask(__name__, )
 bootstrap = Bootstrap(sts9)
 
 #sts9 db connection#
-sts9.config['MONGO_HOST'] = 'labops-bldr-lnx'
+sts9.config['MONGO_HOST'] = '10.0.0.36'
 sts9.config['MONGO_PORT'] = 27017
 sts9.config['MONGO_DBNAME'] = 'sts9_db'
 sts9_db = PyMongo(sts9, config_prefix='MONGO')
@@ -16,7 +16,10 @@ sts9_db = PyMongo(sts9, config_prefix='MONGO')
 #Global Variables
 now = datetime.datetime.now()
 
-
+#Home Page#
+@sts9.route('/')
+def home():
+    return render_template('home.html')
 
 #SETLISTS#
 @sts9.route('/setlists')
@@ -41,8 +44,12 @@ def setlists(year=None):
 
     #object for current year shows
 
-
-
+#SONGS#
+@sts9.route('/songs')
+def songs():
+    #figure out how to get the song occurance totals in a list
+    songs = sorted(sts9_db.db.setlists.distinct('setlist'))
+    return render_template('songs.html', songs=songs)
 
 #404 - Page Not Found Error Handler#
 @sts9.errorhandler(404)

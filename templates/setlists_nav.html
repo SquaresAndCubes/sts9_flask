@@ -3,7 +3,7 @@
 <!-- Title -->
 
 {% block title %}
-STS9 Setlists
+STS9 Setlists - {{year}}
 {% endblock %}
 
 <!-- Content Block -->
@@ -19,7 +19,7 @@ STS9 Setlists
         <!-- year buttons -->
         <div class="btn-group" role="group" aria-label="...">
             {% for yr in years %}
-            <button type="button" class="btn btn-default">{{yr}}</button>
+            <a href="/setlists/{{yr}}" class="btn btn-default" role="button">{{yr}}</a>
             {% endfor %}
         </div>
         <div>
