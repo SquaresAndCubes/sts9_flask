@@ -38,7 +38,7 @@ def setlists(year=None):
         elif year not in years:
             return render_template('404.html')
     #render setlists template
-    setlists = sts9_db.db.setlists.find({'year': year})
+    setlists = sts9_db.db.setlists.find({'year': year}).sort([('month', -1), ('day', -1)])
     return render_template('setlists_nav.html', years=years, setlists=setlists, year=year)
 
 
