@@ -22,7 +22,7 @@ def home():
     return render_template('home.html')
 
 #SETLISTS#
-@sts9.route('/setlists')
+@sts9.route('/setlists')#route
 @sts9.route('/setlists/<year>')
 def setlists(year=None):
     #finds all distinct years, for year navbar
