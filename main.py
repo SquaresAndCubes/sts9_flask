@@ -8,7 +8,7 @@ sts9 = Flask(__name__, )
 bootstrap = Bootstrap(sts9)
 
 #sts9 db connection#
-sts9.config['MONGO_HOST'] = 'labops-bldr-lnx'
+sts9.config['MONGO_HOST'] = '10.0.0.161'
 sts9.config['MONGO_PORT'] = 27017
 sts9.config['MONGO_DBNAME'] = 'sts9_db'
 sts9_db = PyMongo(sts9, config_prefix='MONGO')
@@ -35,7 +35,7 @@ def setlists(year=None):
         #verify if it is a valid year url
         elif year in years:
             break
-        elif year not in years:
+        else:
             return render_template('404.html')
     #render setlists template
     setlists = sts9_db.db.setlists.find({'year': year}).sort([('month', -1), ('day', -1)])
