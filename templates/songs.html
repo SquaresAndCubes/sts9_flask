@@ -22,10 +22,10 @@ All Things STS9 - Songs
                 <th>Times Played</th>
             </tr>
 
-            {% for song in songs %}
+            {% for s, c in songs %}
             <tr>
-                <td>{{song}}</td>
-                <td>tbd</td>
+                <td>{{s}}</td>
+                <td>{{c}}</td>
             </tr>
             {% endfor %}
         </table>

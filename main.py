@@ -48,7 +48,11 @@ def setlists(year=None):
 @sts9.route('/songs')
 def songs():
     #Find unique songs and make list
-    songs = sorted(sts9_db.db.setlists.distinct('setlist'))
+    sngs = sorted(sts9_db.db.setlists.distinct('setlist'))
+    songs = []
+    for song in sngs:
+        count = sts9_db.db.setlists.find({'setlist': song}).count()
+        songs.append([song, count])
     return render_template('songs.html', songs=songs)
 
 #404 - Page Not Found Error Handler#
