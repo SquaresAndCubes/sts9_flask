@@ -26,7 +26,7 @@ def home():
 @sts9.route('/setlists/<year>')
 def setlists(year=None):
     #finds all distinct years, for year navbar
-    years = sts9_db.db.setlists.distinct('year')
+    years = sorted(sts9_db.db.setlists.distinct('year'), reverse= True)
     while True:
         #set to most recent setlists as landing page
         if year == None:
